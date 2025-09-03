@@ -1,7 +1,7 @@
-import { getUserByUuid, getImagesByUserUuid } from '@/lib/kv';
+import { getUserByUuid, getImagesByUserUuid } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { User, Image as ImageType } from '@/lib/kv';
+import { User, Image as ImageType } from '@/lib/db';
 
 interface PageProps {
   params: {

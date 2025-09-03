@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { initializeTestData } from '@/lib/kv';
+import { initializeTestData } from '@/lib/db';
 
 export async function POST() {
   try {

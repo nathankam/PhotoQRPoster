@@ -8,15 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "db:seed": "tsx scripts/seed.ts",
-    "kv:seed": "tsx scripts/seed-kv.ts"
+    "sqlite:seed": "tsx scripts/seed-sqlite.ts"
   },
   "dependencies": {
     "@vercel/blob": "^0.22.0",
-    "@vercel/kv": "^3.0.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "redis": "^5.8.2",
     "resend": "^2.1.0",
     "sqlite3": "^5.1.6",
     "uuid": "^9.0.1"

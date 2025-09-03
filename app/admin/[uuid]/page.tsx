@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getUserByUuid } from '@/lib/kv';
+import { getUserByUuid } from '@/lib/db';
 
 interface PageProps {
   params: {

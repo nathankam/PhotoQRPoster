@@ -1,11 +1,11 @@
-import { initializeTestData } from '../lib/kv';
+import { initializeTestData } from '../lib/db';
 
 async function seed() {
-  console.log('🌱 Initialisation de la base de données Vercel KV...');
+  console.log('🌱 Initialisation de la base de données SQLite...');
   
   try {
     await initializeTestData();
-    console.log('🎉 Base de données Vercel KV initialisée avec succès !');
+    console.log('🎉 Base de données SQLite initialisée avec succès !');
     console.log('\n📋 Utilisateurs de test créés :');
     console.log('   alice@example.com (test-alice) - mot de passe: alice123');
     console.log('   bob@example.com (test-bob) - mot de passe: bob123');

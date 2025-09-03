@@ -167,6 +167,14 @@ PhotoPoster/
 - UUIDs uniques pour chaque utilisateur
 - Mots de passe utilisateur minimum 6 caractères
 
+## 🚨 Gestion des erreurs
+
+- **Page 404** : Utilisateur non trouvé avec liens de navigation
+- **Page d'erreur admin** : Interface admin non trouvée
+- **Page d'erreur upload** : Route d'upload non trouvée
+- **Page d'erreur globale** : Gestion des erreurs 500 et critiques
+- **Messages d'erreur API** : Réponses JSON détaillées avec codes d'erreur
+
 ## 🐛 Dépannage
 
 ### Erreur de base de données

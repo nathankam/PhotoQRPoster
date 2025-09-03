@@ -48,7 +48,11 @@ export async function POST(request: NextRequest) {
     
     if (!user) {
       return NextResponse.json(
-        { message: 'Identifiants incorrects' },
+        { 
+          error: 'INVALID_CREDENTIALS',
+          message: 'Identifiants incorrects',
+          details: 'L\'UUID ou le mot de passe fourni est incorrect'
+        },
         { status: 401 }
       );
     }

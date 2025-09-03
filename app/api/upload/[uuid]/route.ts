@@ -14,7 +14,11 @@ export async function POST(
     const user = await getUserByUuid(uuid) as any;
     if (!user) {
       return NextResponse.json(
-        { message: 'Utilisateur non trouvé' },
+        { 
+          error: 'USER_NOT_FOUND',
+          message: 'Utilisateur non trouvé',
+          details: 'L\'UUID fourni ne correspond à aucun utilisateur existant'
+        },
         { status: 404 }
       );
     }

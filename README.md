@@ -45,7 +45,11 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 
 3. **Configurer les variables d'environnement**
    ```bash
-   cp env.example .env.local
+   # Pour le développement local
+   cp env.local.example .env.local
+   
+   # Pour la production (Vercel)
+   cp env.example .env
    ```
    
    Remplir `.env.local` avec vos vraies valeurs :
@@ -53,6 +57,7 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
    ADMIN_PASSWORD=votre_mot_de_passe_admin
    RESEND_API_KEY=votre_cle_api_resend
    BLOB_READ_WRITE_TOKEN=votre_token_vercel_blob
+   REDIS_URL=votre_url_redis
    ```
 
 4. **Initialiser la base de données (développement local)**
@@ -72,6 +77,20 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
    ```
 
 ## 🔧 Configuration
+
+### Variables d'environnement
+
+#### Développement local (`.env.local`)
+```bash
+cp env.local.example .env.local
+# Remplir avec vos vraies valeurs
+```
+
+#### Production (Vercel)
+```bash
+cp env.example .env
+# Configurer dans Vercel Dashboard → Settings → Environment Variables
+```
 
 ### Vercel Blob Storage
 

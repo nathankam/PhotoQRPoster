@@ -33,7 +33,7 @@ export default function AdminPage({ params }: PageProps) {
         setIsAuthenticated(true);
         setMessage('');
       } else {
-        setMessage('Mot de passe incorrect');
+        setMessage('Mot de passe utilisateur incorrect');
       }
     } catch (error) {
       setMessage('Erreur de connexion');
@@ -74,12 +74,12 @@ export default function AdminPage({ params }: PageProps) {
       <div className="max-w-md mx-auto">
         <div className="bg-white rounded-lg shadow-md p-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Accès Admin
+            Accès Utilisateur
           </h1>
           <form onSubmit={handlePasswordSubmit} className="space-y-4">
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Mot de passe
+                Mot de passe utilisateur
               </label>
               <input
                 type="password"

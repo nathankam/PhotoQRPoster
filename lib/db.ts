@@ -15,7 +15,8 @@ export async function getDb() {
       db.run(`
         CREATE TABLE IF NOT EXISTS users (
           uuid TEXT PRIMARY KEY,
-          email TEXT NOT NULL
+          email TEXT NOT NULL,
+          password TEXT NOT NULL
         )
       `, (err) => {
         if (err) {
@@ -83,6 +84,36 @@ export async function addImage(userUuid: string, url: string) {
           return;
         }
         resolve({ id: this.lastID, changes: this.changes });
+      });
+    }).catch(reject);
+  });
+}
+
+export async function createUser(uuid: string, email: string, password: string) {
+  return new Promise((resolve, reject) => {
+    getDb().then(db => {
+      db.run('INSERT INTO users (uuid, email, password) VALUES (?, ?, ?)', [uuid, email, password], function(err) {
+        db.close();
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve({ id: this.lastID, changes: this.changes });
+      });
+    }).catch(reject);
+  });
+}
+
+export async function verifyUserPassword(uuid: string, password: string) {
+  return new Promise((resolve, reject) => {
+    getDb().then(db => {
+      db.get('SELECT * FROM users WHERE uuid = ? AND password = ?', [uuid, password], (err, row) => {
+        db.close();
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(row);
       });
     }).catch(reject);
   });

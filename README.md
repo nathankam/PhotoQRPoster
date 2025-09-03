@@ -4,9 +4,10 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 
 ## 🚀 Fonctionnalités
 
-- **Gestion d'utilisateurs** : Chaque ami a un UUID unique
+- **Gestion d'utilisateurs** : Chaque ami a un UUID unique et un mot de passe personnel
+- **Création d'utilisateurs** : Interface admin `/create` pour créer de nouveaux utilisateurs
 - **Feed d'images** : Page publique `/[uuid]` pour voir les images d'un ami
-- **Interface admin** : Page protégée `/admin/[uuid]` pour uploader des images
+- **Interface utilisateur** : Page protégée `/admin/[uuid]` pour uploader des images (mot de passe utilisateur)
 - **Notifications automatiques** : Envoi d'emails via Resend quand une nouvelle image est ajoutée
 - **Stockage cloud** : Images stockées sur Vercel Blob Storage
 - **Base de données** : SQLite pour la persistance des données
@@ -86,9 +87,15 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 - Accéder à `/[uuid]` où `[uuid]` est l'UUID de l'ami
 - Les images s'affichent en colonne, mobile-first
 
+### Créer un nouvel utilisateur
+- Aller sur `/create`
+- Saisir le mot de passe administrateur global
+- Remplir l'email et le mot de passe du nouvel utilisateur
+- L'UUID sera généré automatiquement
+
 ### Uploader une image pour un ami
 - Aller sur `/admin/[uuid]`
-- Saisir le mot de passe admin
+- Saisir le mot de passe de l'utilisateur (pas le mot de passe admin)
 - Sélectionner et uploader une image
 - L'ami recevra automatiquement un email
 
@@ -97,6 +104,7 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 ### Table `users`
 - `uuid` (TEXT, PRIMARY KEY) : Identifiant unique de l'utilisateur
 - `email` (TEXT, NOT NULL) : Email de l'utilisateur
+- `password` (TEXT, NOT NULL) : Mot de passe de l'utilisateur
 
 ### Table `images`
 - `id` (INTEGER, PRIMARY KEY, AUTOINCREMENT) : Identifiant de l'image
@@ -152,10 +160,12 @@ PhotoPoster/
 
 ## 🔒 Sécurité
 
-- L'interface admin est protégée par mot de passe
+- L'interface de création d'utilisateurs est protégée par le mot de passe administrateur global
+- Chaque utilisateur a son propre mot de passe pour accéder à son interface d'upload
 - Validation des types de fichiers (images uniquement)
 - Limitation de taille des fichiers (10MB max)
 - UUIDs uniques pour chaque utilisateur
+- Mots de passe utilisateur minimum 6 caractères
 
 ## 🐛 Dépannage
 

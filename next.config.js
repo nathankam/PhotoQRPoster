@@ -4,7 +4,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ['sqlite3'],
   },
   images: {
-    domains: ['blob.vercel-storage.com'],
+    domains: ['blob.vercel-storage.com', 'images.unsplash.com'],
   },
 }
 

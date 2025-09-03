@@ -6,18 +6,19 @@ async function seed() {
 
   // Ajouter quelques utilisateurs fictifs
   const users = [
-    { uuid: uuidv4(), email: 'alice@example.com' },
-    { uuid: uuidv4(), email: 'bob@example.com' },
-    { uuid: uuidv4(), email: 'charlie@example.com' },
+    { uuid: uuidv4(), email: 'alice@example.com', password: 'alice123' },
+    { uuid: uuidv4(), email: 'bob@example.com', password: 'bob123' },
+    { uuid: uuidv4(), email: 'charlie@example.com', password: 'charlie123' },
   ];
 
   console.log('🌱 Seeding database...');
 
   for (const user of users) {
     try {
-      await db.run('INSERT OR REPLACE INTO users (uuid, email) VALUES (?, ?)', [
+      await db.run('INSERT OR REPLACE INTO users (uuid, email, password) VALUES (?, ?, ?)', [
         user.uuid,
         user.email,
+        user.password,
       ]);
       console.log(`✅ Added user: ${user.email} (${user.uuid})`);
     } catch (error) {

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { uploadToBlob } from '@/lib/blob';
-import { addImage, getUserByUuid } from '@/lib/db';
+import { addImage, getUserByUuid } from '@/lib/kv';
 import { sendImageNotification } from '@/lib/email';
 
 export async function POST(

@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Importer la fonction de vérification
-    const { verifyUserPassword } = await import('@/lib/db');
+    const { verifyUserPassword } = await import('@/lib/kv');
     
     const user = await verifyUserPassword(uuid, password);
     

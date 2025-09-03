@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createUser } from '@/lib/db';
+import { createUser } from '@/lib/kv';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: NextRequest) {

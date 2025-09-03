@@ -16,7 +16,7 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 ## 🛠️ Stack technique
 
 - **Frontend** : Next.js 14 (App Router)
-- **Base de données** : SQLite
+- **Base de données** : Redis (Redis Cloud)
 - **Stockage** : Vercel Blob Storage
 - **Emails** : Resend API
 - **Styling** : TailwindCSS
@@ -55,9 +55,13 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
    BLOB_READ_WRITE_TOKEN=votre_token_vercel_blob
    ```
 
-4. **Initialiser la base de données**
+4. **Initialiser la base de données (développement local)**
    ```bash
+   # Pour SQLite (développement local uniquement)
    npm run db:seed
+   
+   # Pour Vercel KV (production)
+   npm run kv:seed
    ```
    
    Cela créera des utilisateurs fictifs et affichera leurs UUIDs.
@@ -74,6 +78,13 @@ Une application web Next.js pour partager des images avec vos amis, déployable 
 1. Créer un projet sur [Vercel](https://vercel.com)
 2. Aller dans Storage → Blob
 3. Créer un store et récupérer le token `BLOB_READ_WRITE_TOKEN`
+
+### Redis (Base de données)
+
+1. Créer un compte sur [Redis Cloud](https://redis.com/try-free/)
+2. Créer une base de données Redis
+3. Récupérer la variable d'environnement `REDIS_URL`
+4. Format : `redis://default:password@host:port`
 
 ### Resend
 
@@ -157,6 +168,7 @@ PhotoPoster/
    - `ADMIN_PASSWORD`
    - `RESEND_API_KEY`
    - `BLOB_READ_WRITE_TOKEN`
+   - `REDIS_URL`
 
 ## 🔒 Sécurité
 
